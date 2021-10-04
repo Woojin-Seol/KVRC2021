@@ -69,14 +69,14 @@ $ sudo apt-get upgrade
 + Clone the git
 ~~~shell
 $ cd <your_workspace>/src
-$ git clone --recursive https://github.com/engcang/khnp_competition2021
+$ git clone --recursive https://github.com/Woojin-Seol/KVRC2021
 ~~~
 
 <br>
 
 + Add Gazebo Path
 ~~~shell
-$ cd khnp_competition2021/gazebo_map_for_khnp
+$ cd KVRC2021/gazebo_map_for_khnp
 $ echo "export GAZEBO_MODEL_PATH=:$GAZEBO_MODEL_PATH:$(pwd)/refracted_corridor_map:$(pwd)/rough_terrain_map:$(pwd)/stair_map:$(pwd)/qr_codes:$(pwd)/manipulator_map:$(pwd)/disturbance_map:$(pwd)/common" >> ~/.bashrc
 $ . ~/.bashrc
 ~~~
