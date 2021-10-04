@@ -33,10 +33,10 @@ class mason_spawner():
         for i in range(12):
             self.pub_data[i]=msg.points[0].positions[i]
         self.pub_data[12]=0.0
-        self.pub_data[13]=-0.9
-        self.pub_data[14]=-1.0
+        self.pub_data[13]=-1.57
+        self.pub_data[14]=-1.57
         self.pub_data[15]=0.0
-        self.pub_data[16]=-0.5
+        self.pub_data[16]=-1.57
         self.pub_data[17]=0.0
         msg.points[0].positions=self.pub_data
         self.quad_arm_pub.publish(msg)
