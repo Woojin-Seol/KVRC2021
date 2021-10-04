@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<launch>
+
+
+
+<!-- Edit this part optionally for debugging-->
+  <arg name="gui" default="true"/> <!-- Gazebo gui, set false when too slow -->
+  <arg name="pause" default="false"/> <!-- Gazebo start with paused -->
+  <arg name="verbose" default="false"/> <!-- Gazebo verbose, set true when debug Gazebo -->
+
+<!-- Edit this part with your own algorithms -->
+<!-- In detail, below three lines are control codes with open sources or temporal code-->
+  <include file="$(find pipebot_config)/launch/bringup.launch"/> <!-- You can also edit .yaml files regarding control gains, configs, etc. -->
+  <include file="$(find champ_teleop)/launch/teleop.launch">
+    <arg name="joy"  default="true"/>
+    <arg name="dev"  default="/dev/input/js1"/>
+  </include>
+  <node name="temp_arm_control_code" pkg="khnp_competition" type="temp_control_arm.py"/>
+
+
+
+
+
+<!-- Do not touch below!!!!!!!! -->
+ <!-- course changing is only allowed for competition managers -->
+  <arg name="course" default="A"/> <!-- A: open source for participants, B: not open -->
+
+  <!-- Gazebo -->
+  <arg if="$(eval arg('course') == 'A')" name="gazebo_world" value="$(find khnp_competition)/../gazebo_map_for_khnp/course_A.world"/>
+  <arg if="$(eval arg('course') == 'B')" name="gazebo_world" value="$(find khnp_competition)/../gazebo_map_for_khnp/course_B.world" />
+  <include file="$(find pipebot_config)/launch/gazebo.launch">
+      <arg name="gazebo_world" value="$(arg gazebo_world)"/>
+      <!-- <arg name="gazebo_world" value="worlds/empty.world"/> -->
+      <arg name="gui" value="$(arg gui)" />
+      <arg name="verbose" value="$(arg verbose)"/>
+      <arg name="pause" value="$(arg pause)"/>
+  </include>
+
+  <!--  MAIN code -->
+  <param name="/img_width" value="480"/> <!-- only for visualization, not for real image width -->
+  <param name="/img_height" value="320"/> 
+  <param name="/first_cam_topic" value="/l515/depth/rgb_image_raw/compressed"/>
+  <param name="/third_cam_topic" value="/third_camera/rgb/image_raw/compressed"/>
+  <param name="/third_cam_name" value="third_camera"/>
+  <param name="/robot_name" value="/"/>
+
+  <group if="$(eval arg('course') == 'A')">
+    <node name="khnp_competition_code" pkg="khnp_competition" type="khnp_competition_node_A" output="screen"/>
+  <!-- launch-prefix="gdb -ex run --> <!--args" -->
+  </group>
+  <group if="$(eval arg('course') == 'B')">
+    <node name="khnp_competition_code" pkg="khnp_competition" type="khnp_competition_node_B" output="screen"/>
+  <!-- launch-prefix="gdb -ex run --> <!--args" -->
+  </group>
+
+  <node name="khnp_competition_spawner" pkg="khnp_competition" type="spawning.py" output="screen"/>
+
+</launch>

@@ -1,0 +1,640 @@
+<?xml version="1.0" ?>
+<robot name="pipebot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find pipebot_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find pipebot_description)/urdf/pipebot.trans" />
+<xacro:include filename="$(find pipebot_description)/urdf/pipebot.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0033827602101410043 -0.00027510616293287325 0.07066379377055013"/>
+    <mass value="14.029718208807811"/>
+    <inertia ixx="0.085792" ixy="-4e-06" ixz="-0.005638" iyy="0.321558" iyz="-0.0" izz="0.365464"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="FR_hip_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.05534495479566107 -0.008820712971960562 -3.2335245592207684e-15"/>
+    <mass value="0.5405625696384098"/>
+    <inertia ixx="0.000528" ixy="-2e-06" ixz="-0.0" iyy="0.000646" iyz="-0.0" izz="0.000551"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0897 0.110275 -0.0675"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/FR_hip_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0897 0.110275 -0.0675"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/FR_hip_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="FL_hip_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.05534495479566112 0.008821436558665019 3.066991105526995e-15"/>
+    <mass value="0.5405625696384098"/>
+    <inertia ixx="0.000528" ixy="2e-06" ixz="0.0" iyy="0.000646" iyz="-0.0" izz="0.000551"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0897 -0.109725 -0.0675"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/FL_hip_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0897 -0.109725 -0.0675"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/FL_hip_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="BR_hip_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.05534530530947 -0.00882071297196084 2.9837243786801082e-15"/>
+    <mass value="0.5405625696384098"/>
+    <inertia ixx="0.000528" ixy="2e-06" ixz="-0.0" iyy="0.000646" iyz="0.0" izz="0.000551"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.0903 0.110275 -0.0675"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/BR_hip_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.0903 0.110275 -0.0675"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/BR_hip_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="BL_hip_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.05534530530946975 0.008821436558665116 -3.3029134982598407e-15"/>
+    <mass value="0.5405625696384098"/>
+    <inertia ixx="0.000528" ixy="-2e-06" ixz="0.0" iyy="0.000646" iyz="0.0" izz="0.000551"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.0903 -0.109725 -0.0675"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/BL_hip_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.0903 -0.109725 -0.0675"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/BL_hip_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="FR_thigh_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.752569043500518e-07 0.008553923180792372 -0.1460839641861526"/>
+    <mass value="0.6712775800969663"/>
+    <inertia ixx="0.004329" ixy="-0.0" ixz="-0.0" iyy="0.004392" iyz="0.000581" izz="0.000652"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.1447 0.160275 -0.0675"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/FR_thigh_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.1447 0.160275 -0.0675"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/FR_thigh_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="FL_thigh_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.7525690446107411e-07 -0.008553199594087929 -0.1460839641861526"/>
+    <mass value="0.6712775800969663"/>
+    <inertia ixx="0.004329" ixy="-0.0" ixz="0.0" iyy="0.004392" iyz="-0.000581" izz="0.000652"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.1447 -0.159725 -0.0675"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/FL_thigh_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.1447 -0.159725 -0.0675"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/FL_thigh_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="BR_thigh_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.7525690446107411e-07 0.008553923180792067 -0.14608396418615266"/>
+    <mass value="0.6712775800969663"/>
+    <inertia ixx="0.004329" ixy="0.0" ixz="0.0" iyy="0.004392" iyz="0.000581" izz="0.000652"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.1453 0.160275 -0.0675"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/BR_thigh_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.1453 0.160275 -0.0675"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/BR_thigh_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="BL_thigh_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.7525690432229624e-07 -0.008553199594087763 -0.14608396418615266"/>
+    <mass value="0.6712775800969663"/>
+    <inertia ixx="0.004329" ixy="0.0" ixz="-0.0" iyy="0.004392" iyz="-0.000581" izz="0.000652"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.1453 -0.159725 -0.0675"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/BL_thigh_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.1453 -0.159725 -0.0675"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/BL_thigh_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="FR_calf_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-6.545205563368572e-07 -0.026638451213781028 -0.06322775699684074"/>
+    <mass value="0.44827046160119605"/>
+    <inertia ixx="0.002095" ixy="0.0" ixz="0.0" iyy="0.002115" iyz="-7.1e-05" izz="0.000179"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.1447 0.180275 0.1325"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/FR_calf_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.1447 0.180275 0.1325"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/FR_calf_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="FL_calf_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="3.0400674758124246e-07 0.02663917480048489 -0.06322775699684105"/>
+    <mass value="0.44827046160119605"/>
+    <inertia ixx="0.002095" ixy="0.0" ixz="-0.0" iyy="0.002115" iyz="7.1e-05" izz="0.000179"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.1447 -0.179725 0.1325"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/FL_calf_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.1447 -0.179725 0.1325"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/FL_calf_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="BR_calf_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-6.545205564478795e-07 -0.026638451213780612 -0.06322775699684094"/>
+    <mass value="0.44827046160119605"/>
+    <inertia ixx="0.002095" ixy="0.0" ixz="0.0" iyy="0.002115" iyz="-7.1e-05" izz="0.000179"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.1453 0.180275 0.1325"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/BR_calf_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.1453 0.180275 0.1325"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/BR_calf_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="BL_calf_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="3.0400674780328707e-07 0.026639174800485 -0.06322775699683994"/>
+    <mass value="0.44827046160119605"/>
+    <inertia ixx="0.002095" ixy="0.0" ixz="-0.0" iyy="0.002115" iyz="7.1e-05" izz="0.000179"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.1453 -0.179725 0.1325"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/BL_calf_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.1453 -0.179725 0.1325"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/BL_calf_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ARM_1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.7525690418351836e-07 -0.005830729905288033 0.057375249759442165"/>
+    <mass value="0.7137414944358373"/>
+    <inertia ixx="0.000943" ixy="-0.0" ixz="-0.0" iyy="0.000925" iyz="1.1e-05" izz="0.000857"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.1397 0.000275 -0.1915"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/ARM_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.1397 0.000275 -0.1915"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/ARM_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ARM_2_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.7525690415576278e-07 -0.02012141912775895 0.10000000000000003"/>
+    <mass value="0.773912520513888"/>
+    <inertia ixx="0.004467" ixy="-0.0" ixz="0.0" iyy="0.004728" iyz="0.0" izz="0.000448"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.1397 0.056275 -0.2515"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/ARM_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.1397 0.056275 -0.2515"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/ARM_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ARM_3_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.6744995820494601e-07 0.052205017987439005 0.03937119797670785"/>
+    <mass value="0.8606075760650315"/>
+    <inertia ixx="0.002133" ixy="0.0" ixz="-0.0" iyy="0.002006" iyz="-0.000203" izz="0.00081"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.1397 0.056275 -0.4515"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/ARM_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.1397 0.056275 -0.4515"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/ARM_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ARM_4_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-3.009150454369447e-07 6.579991790117094e-07 0.04871488915431432"/>
+    <mass value="0.16016196275303185"/>
+    <inertia ixx="0.000446" ixy="0.0" ixz="-0.0" iyy="0.000233" iyz="0.0" izz="0.000344"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.1397 -0.001725 -0.5765"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/ARM_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.1397 -0.001725 -0.5765"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/ARM_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ARM_5_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.6924779255855782e-07 0.045000352936759976 0.029600723352987135"/>
+    <mass value="0.6278003275043091"/>
+    <inertia ixx="0.001456" ixy="0.0" ixz="-0.0" iyy="0.001399" iyz="0.0" izz="0.000458"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.1397 0.043275 -0.6515"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/ARM_5_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.1397 0.043275 -0.6515"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/ARM_5_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ARM_6_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.03224349227133551 4.51063936480838e-06 0.02024322382633237"/>
+    <mass value="0.286612233804275"/>
+    <inertia ixx="0.000168" ixy="0.0" ixz="4.1e-05" iyy="0.000239" iyz="-0.0" izz="0.000346"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.1397 -0.001725 -0.7765"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/ARM_6_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.1397 -0.001725 -0.7765"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/ARM_6_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="FL_foot_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.7525690432229624e-07 3.6179335244357347e-07 -0.0018890805472966399"/>
+    <mass value="0.05646802367385563"/>
+    <inertia ixx="1.4e-05" ixy="0.0" ixz="0.0" iyy="1.4e-05" iyz="0.0" izz="1.6e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.1447 -0.209725 0.3825"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/FL_foot_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.1447 -0.209725 0.3825"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/FL_foot_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="FR_foot_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.7525690426678509e-07 3.617933521660177e-07 -0.0018890805472965844"/>
+    <mass value="0.05646802367385563"/>
+    <inertia ixx="1.4e-05" ixy="-0.0" ixz="0.0" iyy="1.4e-05" iyz="0.0" izz="1.6e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.1447 0.210275 0.3825"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/FR_foot_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.1447 0.210275 0.3825"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/FR_foot_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="BR_foot_4">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.752569043500518e-07 3.6179335222152886e-07 -0.0018890805472984162"/>
+    <mass value="0.05646802367385563"/>
+    <inertia ixx="1.4e-05" ixy="-0.0" ixz="0.0" iyy="1.4e-05" iyz="-0.0" izz="1.6e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.1453 0.210275 0.3825"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/BR_foot_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.1453 0.210275 0.3825"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/BR_foot_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="BL_foot_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.7525690507169678e-07 3.617933526101069e-07 -0.0018890805472970285"/>
+    <mass value="0.05646802367385563"/>
+    <inertia ixx="1.4e-05" ixy="0.0" ixz="0.0" iyy="1.4e-05" iyz="0.0" izz="1.6e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.1453 -0.209725 0.3825"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/BL_foot_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.1453 -0.209725 0.3825"/>
+    <geometry>
+      <mesh filename="package://pipebot_description/meshes/BL_foot_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="FR_hip_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0897 -0.110275 0.0675"/>
+  <parent link="base_link"/>
+  <child link="FR_hip_1"/>
+  <axis xyz="-1.0 -0.0 0.0"/>
+</joint>
+
+<joint name="FL_hip_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0897 0.109725 0.0675"/>
+  <parent link="base_link"/>
+  <child link="FL_hip_1"/>
+  <axis xyz="-1.0 -0.0 0.0"/>
+</joint>
+
+<joint name="BR_hip_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.0903 -0.110275 0.0675"/>
+  <parent link="base_link"/>
+  <child link="BR_hip_1"/>
+  <axis xyz="1.0 0.0 -0.0"/>
+</joint>
+
+<joint name="BL_hip_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.0903 0.109725 0.0675"/>
+  <parent link="base_link"/>
+  <child link="BL_hip_2"/>
+  <axis xyz="1.0 0.0 -0.0"/>
+</joint>
+
+<joint name="FR_thigh_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="0.055 -0.05 0.0"/>
+  <parent link="FR_hip_1"/>
+  <child link="FR_thigh_2"/>
+  <axis xyz="0.0 -1.0 -0.0"/>
+</joint>
+
+<joint name="FL_thigh_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="0.055 0.05 0.0"/>
+  <parent link="FL_hip_1"/>
+  <child link="FL_thigh_1"/>
+  <axis xyz="-0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="BR_thigh_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.055 -0.05 0.0"/>
+  <parent link="BR_hip_1"/>
+  <child link="BR_thigh_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="BL_thigh_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.055 0.05 0.0"/>
+  <parent link="BL_hip_2"/>
+  <child link="BL_thigh_1"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+</joint>
+
+<joint name="FR_calf_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 -0.02 -0.2"/>
+  <parent link="FR_thigh_2"/>
+  <child link="FR_calf_2"/>
+  <axis xyz="0.0 -1.0 -0.0"/>
+</joint>
+
+<joint name="FL_calf_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 0.02 -0.2"/>
+  <parent link="FL_thigh_1"/>
+  <child link="FL_calf_1"/>
+  <axis xyz="-0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="BR_calf_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 -0.02 -0.2"/>
+  <parent link="BR_thigh_1"/>
+  <child link="BR_calf_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="BL_calf_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 0.02 -0.2"/>
+  <parent link="BL_thigh_1"/>
+  <child link="BL_calf_1"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+</joint>
+
+<joint name="arm_1_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="0.1397 -0.000275 0.1915"/>
+  <parent link="base_link"/>
+  <child link="ARM_1_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+</joint>
+
+<joint name="arm_2_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 -0.056 0.06"/>
+  <parent link="ARM_1_1"/>
+  <child link="ARM_2_1"/>
+  <axis xyz="-0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="arm_3_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 0.0 0.2"/>
+  <parent link="ARM_2_1"/>
+  <child link="ARM_3_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="arm_4_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 0.058 0.125"/>
+  <parent link="ARM_3_1"/>
+  <child link="ARM_4_1"/>
+  <axis xyz="-0.0 0.0 1.0"/>
+</joint>
+
+<joint name="arm_5_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 -0.045 0.075"/>
+  <parent link="ARM_4_1"/>
+  <child link="ARM_5_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="arm_6_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 0.045 0.125"/>
+  <parent link="ARM_5_1"/>
+  <child link="ARM_6_1"/>
+  <axis xyz="-0.0 0.0 1.0"/>
+</joint>
+
+<joint name="FL_foot_fixed" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.03 -0.25"/>
+  <parent link="FL_calf_1"/>
+  <child link="FL_foot_1"/>
+</joint>
+
+<joint name="FR_foot_fixed" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 -0.03 -0.25"/>
+  <parent link="FR_calf_2"/>
+  <child link="FR_foot_1"/>
+</joint>
+
+<joint name="BR_foot_fixed" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 -0.03 -0.25"/>
+  <parent link="BR_calf_1"/>
+  <child link="BR_foot_4"/>
+</joint>
+
+<joint name="BL_foot_fixed" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.03 -0.25"/>
+  <parent link="BL_calf_1"/>
+  <child link="BL_foot_1"/>
+</joint>
+
+</robot>

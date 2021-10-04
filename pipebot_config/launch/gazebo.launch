@@ -1,0 +1,34 @@
+<launch>
+    <arg name="robot_name"         default="/"/> <!-- Change this for namespacing. -->
+    <arg name="gazebo_world"       default="worlds/empty.world" /> <!-- Path to Gazebo world you want to load. -->
+    <arg name="gui"                default="true"/>
+    <arg name="verbose"            default="false"/>
+    <arg name="pause"              default="false"/>
+    <arg name="world_init_x"       default="1.0" /> <!-- X Initial position of the robot in Gazebo World -->
+    <arg name="world_init_y"       default="0.0" /> <!-- Y Initial position of the robot in Gazebo World -->
+    <arg name="world_init_z"       default="1.0" /> <!-- Z Initial position of the robot in Gazebo World -->
+    <arg name="world_init_heading" default="0.0" /> <!-- Initial heading of the robot in Gazebo World -->
+    <arg name="description_file"   default="$(find pipebot_config)/urdf/pipebot.urdf"/> <!-- Path to URDF file Do not touch this. -->
+
+    <param name="use_sim_time" value="true" />
+
+    <!-- ==================== 2) load gazebo world ==================== -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(arg gazebo_world)"/>
+        <arg name="gui" value="$(arg gui)" />
+        <arg name="verbose" value="$(arg verbose)"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="paused" value="$(arg pause)"/>
+        <arg name="headless" value="false"/>
+    </include>
+
+    <group ns="$(arg robot_name)">
+        <arg name="description_name"           default="robot_description"/>
+        <param name="$(arg description_name)" command="$(find xacro)/xacro --inorder '$(arg description_file)'"/>
+        <node  name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-urdf -model $(arg robot_name)  
+        -param robot_description -robot_namespace $(arg robot_name) 
+        -x $(arg world_init_x) -y $(arg world_init_y) -z $(arg world_init_z) -Y $(arg world_init_heading)" />
+    </group>  
+
+
+</launch>

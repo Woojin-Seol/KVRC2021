@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="course" default="A"/> <!-- A: open source for participants, B: not open -->
+
+  <!--  MAIN code -->
+  <param name="/img_width" value="480"/> <!-- only for visualization, not for real image width -->
+  <param name="/img_height" value="320"/> 
+  <param name="/first_cam_topic" value="/l515/depth/rgb_image_raw/compressed"/>
+  <param name="/third_cam_topic" value="/third_camera/rgb/image_raw/compressed"/>
+  <param name="/third_cam_name" value="third_camera"/>
+  <param name="/robot_name" value="/"/>
+
+  <group if="$(eval arg('course') == 'A')">
+    <node name="khnp_competition_code" pkg="khnp_competition" type="khnp_competition_node_A" output="screen" launch-prefix="gdb -ex run --args"/>
+  <!-- launch-prefix="gdb -ex run --> <!--args" -->
+  </group>
+  <group if="$(eval arg('course') == 'B')">
+    <node name="khnp_competition_code" pkg="khnp_competition" type="khnp_competition_node_B" output="screen" launch-prefix="gdb -ex run --args"/>
+  <!-- launch-prefix="gdb -ex run --> <!--args" -->
+  </group>
+
+  <node name="khnp_competition_spawner" pkg="khnp_competition" type="spawning.py" output="screen"/>
+
+</launch>

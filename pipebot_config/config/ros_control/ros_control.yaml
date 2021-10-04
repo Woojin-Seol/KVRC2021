@@ -1,0 +1,101 @@
+"":
+  joint_states_controller:
+      type: joint_state_controller/JointStateController
+      publish_rate: 50
+
+  joint_group_position_controller:
+      type: effort_controllers/JointTrajectoryController
+      joints:
+          - FL_hip_joint
+          - FL_thigh_joint
+          - FL_calf_joint
+          - FR_hip_joint
+          - FR_thigh_joint
+          - FR_calf_joint
+          - BL_hip_joint
+          - BL_thigh_joint
+          - BL_calf_joint
+          - BR_hip_joint
+          - BR_thigh_joint
+          - BR_calf_joint
+          - arm_1_joint
+          - arm_2_joint
+          - arm_3_joint
+          - arm_4_joint
+          - arm_5_joint
+          - arm_6_joint
+
+      gains:
+        FL_hip_joint : {p: 150, d: 8, i: 3}
+        FL_thigh_joint : {p: 150, d: 8, i: 3}
+        FL_calf_joint : {p: 150, d: 8, i: 3}
+        FR_hip_joint : {p: 150, d: 8, i: 3}
+        FR_thigh_joint : {p: 150, d: 8, i: 3}
+        FR_calf_joint : {p: 150, d: 8, i: 3}
+        BL_hip_joint : {p: 150, d: 8, i: 3}
+        BL_thigh_joint : {p: 150, d: 8, i: 3}
+        BL_calf_joint : {p: 150, d: 8, i: 3}
+        BR_hip_joint : {p: 150, d: 8, i: 3}
+        BR_thigh_joint : {p: 150, d: 8, i: 3}
+        BR_calf_joint : {p: 150, d: 8, i: 3}
+        arm_1_joint : {p: 180, d: 0.3, i: 10}
+        arm_2_joint : {p: 180, d: 0.3, i: 10}
+        arm_3_joint : {p: 180, d: 0.3, i: 10}
+        arm_4_joint : {p: 180, d: 0.3, i: 10}
+        arm_5_joint : {p: 180, d: 0.3, i: 10}
+        arm_6_joint : {p: 180, d: 0.3, i: 10}
+
+  joint_finger_position_controller:
+      type: position_controllers/JointTrajectoryController
+      joints:
+          - finger_joint
+          - left_inner_knuckle_joint
+          - left_inner_finger_joint
+          - right_outer_knuckle_joint
+          - right_inner_knuckle_joint
+          - right_inner_finger_joint
+  
+  gazebo_ros_control:
+    pid_gains:
+      finger_joint:
+        p: 8.0
+        i: 0.1
+        d: 0.0
+        i_clamp: 0.1
+        antiwindup: true
+        publish_state: true
+      left_inner_knuckle_joint:
+        p: 8.0
+        i: 0.1
+        d: 0.0
+        i_clamp: 0.1
+        antiwindup: true
+        publish_state: true        
+      left_inner_finger_joint:
+        p: 8.0
+        i: 0.1
+        d: 0.0
+        i_clamp: 0.1
+        antiwindup: true
+        publish_state: true        
+      right_outer_knuckle_joint:
+        p: 8.0
+        i: 0.1
+        d: 0.0
+        i_clamp: 0.1
+        antiwindup: true
+        publish_state: true        
+      right_inner_knuckle_joint:
+        p: 8.0
+        i: 0.1
+        d: 0.0
+        i_clamp: 0.1
+        antiwindup: true
+        publish_state: true        
+      right_inner_finger_joint:
+        p: 8.0
+        i: 0.1
+        d: 0.0
+        i_clamp: 0.1
+        antiwindup: true
+        publish_state: true        

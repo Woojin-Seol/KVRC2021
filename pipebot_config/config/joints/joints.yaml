@@ -1,0 +1,23 @@
+left_front:
+  - FL_hip_joint
+  - FL_thigh_joint
+  - FL_calf_joint
+  - FL_foot_fixed
+
+right_front:
+  - FR_hip_joint
+  - FR_thigh_joint
+  - FR_calf_joint
+  - FR_foot_fixed
+
+left_hind:
+  - BL_hip_joint
+  - BL_thigh_joint
+  - BL_calf_joint
+  - BL_foot_fixed
+
+right_hind:
+  - BR_hip_joint
+  - BR_thigh_joint
+  - BR_calf_joint
+  - BR_foot_fixed

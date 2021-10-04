@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>pipebot_config</name>
+  <version>0.1.0</version>
+  <description>pipebot Champ Config Package</description>
+
+  <maintainer email="mason@kaist.com">Mason</maintainer>
+  <author>Mason</author>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>roslaunch</exec_depend>
+  
+</package>
