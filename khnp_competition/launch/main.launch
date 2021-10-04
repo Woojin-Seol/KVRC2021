@@ -13,7 +13,7 @@
   <include file="$(find pipebot_config)/launch/bringup.launch"/> <!-- You can also edit .yaml files regarding control gains, configs, etc. -->
   <include file="$(find champ_teleop)/launch/teleop.launch">
     <arg name="joy"  default="true"/>
-    <arg name="dev"  default="/dev/input/js1"/>
+    <arg name="dev"  default="/dev/input/js0"/>
   </include>
   <node name="temp_arm_control_code" pkg="khnp_competition" type="temp_control_arm.py"/>
 
