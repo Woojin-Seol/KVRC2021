@@ -74,7 +74,7 @@ $ git clone --recursive https://github.com/Woojin-Seol/KVRC2021
 
 <br>
 
-+ Add Gazebo Path
++ Add Gazebo Path **ONLY ONCE, do NOT run below block again!!**
 ~~~shell
 $ cd KVRC2021/gazebo_map_for_khnp
 $ echo "export GAZEBO_MODEL_PATH=:$GAZEBO_MODEL_PATH:$(pwd)/refracted_corridor_map:$(pwd)/rough_terrain_map:$(pwd)/stair_map:$(pwd)/qr_codes:$(pwd)/manipulator_map:$(pwd)/disturbance_map:$(pwd)/common" >> ~/.bashrc
