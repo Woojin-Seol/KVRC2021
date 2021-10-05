@@ -125,7 +125,7 @@ class khnp_comp: public QWidget{
     int robot_idx=0, cube_idx=0, img_width, img_height, current_score=0, falldown_score=0;
     position3d tolerance={0.15, 0.6, 0.5};
     position3d sphere_tolerance={0.15, 1000.0, 0.5};
-    position3d cube_tolerance={0.25, 0.6, 1.5};
+    position3d cube_tolerance={0.85, 0.65, 1.5};
 
 
     ///// ros and tf
@@ -525,6 +525,14 @@ void khnp_comp::if_passed_course(geometry_msgs::Pose pose){
       if (within_range(states.pose[cube_idx].position, courseAB[current_map].courses[current_course].finish_position, cube_tolerance)){
         current_score+=courseAB[current_map].courses[current_course].score;
         right_text5->setText(QString::number(current_score,'g',7));
+        for (int i = 0; i < cubes_names.size(); ++i){
+          other_pose.model_name = cubes_names[i];
+          other_pose.pose.position.x = cubes_poses[i].x; other_pose.pose.position.y = cubes_poses[i].y; other_pose.pose.position.z = cubes_poses[i].z;
+          other_pose.pose.orientation.x = 0.0; other_pose.pose.orientation.y = 0.0; other_pose.pose.orientation.z = 0.0; other_pose.pose.orientation.w = 1.0;
+          other_pose.twist.linear.x = 0.0; other_pose.twist.linear.y = 0.0; other_pose.twist.linear.z = 0.0;
+          model_move_srv.request.model_state = other_pose;
+          model_mover.call(model_move_srv);
+        }
       }
     }
     else{
