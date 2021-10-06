@@ -1495,7 +1495,7 @@
         <cameraName>stereo_ir</cameraName>
         <imageTopicName>image_raw</imageTopicName>
         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-        <frameName>d435_link</frameName>
+        <frameName>d435_camera_link</frameName>
         <hackBaseline>0.05</hackBaseline>
       </plugin>
     </sensor>
@@ -1531,7 +1531,7 @@
         <depthImageTopicName>image_raw</depthImageTopicName>
         <depthImageCameraInfoTopicName>camera_info</depthImageCameraInfoTopicName>
         <pointCloudTopicName>pointcloud</pointCloudTopicName>
-        <frameName>d435_link</frameName>
+        <frameName>d435_camera_link</frameName>
         <pointCloudCutoff>0.3</pointCloudCutoff>
         <pointCloudCutoffMax>4.0</pointCloudCutoffMax>
         <hackBaseline>0.05</hackBaseline>
@@ -1585,7 +1585,7 @@
         <depthImageTopicName>image_raw</depthImageTopicName>
         <depthImageCameraInfoTopicName>camera_info</depthImageCameraInfoTopicName>
         <pointCloudTopicName>pointcloud</pointCloudTopicName>
-        <frameName>l515_link</frameName>
+        <frameName>l515_camera_link</frameName>
         <pointCloudCutoff>0.25</pointCloudCutoff>
         <pointCloudCutoffMax>9.0</pointCloudCutoffMax>
         <hackBaseline>0.03</hackBaseline>
@@ -1639,7 +1639,7 @@
         <depthImageTopicName>image_raw</depthImageTopicName>
         <depthImageCameraInfoTopicName>camera_info</depthImageCameraInfoTopicName>
         <pointCloudTopicName>pointcloud</pointCloudTopicName>
-        <frameName>l515_link_back</frameName>
+        <frameName>l515_camera_link_back</frameName>
         <pointCloudCutoff>0.25</pointCloudCutoff>
         <pointCloudCutoffMax>9.0</pointCloudCutoffMax>
         <hackBaseline>0.03</hackBaseline>
@@ -1699,7 +1699,7 @@
         <cameraName>stereo_ir/left</cameraName>
         <imageTopicName>fisheye_image_raw</imageTopicName>
         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-        <frameName>t265_link</frameName>
+        <frameName>t265_camera_link</frameName>
         <hackBaseline>0</hackBaseline>
       </plugin>
     </sensor>
@@ -1741,7 +1741,7 @@
         <cameraName>stereo_ir/right</cameraName>
         <imageTopicName>fisheye_image_raw</imageTopicName>
         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-        <frameName>t265_link</frameName>
+        <frameName>t265_camera_link_right</frameName>
         <hackBaseline>0</hackBaseline>
       </plugin>
     </sensor>
