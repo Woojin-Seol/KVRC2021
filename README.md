@@ -6,6 +6,8 @@
 
 
 ## Homepage - [click](https://kvrc2021.com)
+## Promotion Video [click](https://youtu.be/6oXx2bvzU9Y)
+## NEWS article [click](https://www.etnews.com/20211006000054)
 
 
 <br>
