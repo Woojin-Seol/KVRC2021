@@ -731,6 +731,7 @@ void khnp_comp::finish_result(){
 
 void khnp_comp::QT_initialize(){
   logo_img = cv::imread(path + "/resources/khnp.jpg");
+  cv::resize( logo_img, logo_img, cv::Size( logo_img.cols/2, logo_img.rows/2 ), 0, 0, CV_INTER_NN );
   pause_img = cv::imread(path + "/resources/pause.png");
   paused_img = cv::imread(path + "/resources/paused.png");
   falldown_img = cv::imread(path + "/resources/falldown.png");
