@@ -939,6 +939,20 @@ void khnp_comp::QT_initialize(){
   font.setPointSize(13);
   right_text10->setFont(font);
 
+  QString creator = "Maintainers (Report any bugs please)\n\nEungchang Mason Lee (email: engcang93@gmail.com)\nJunho Choi (email: cjh6685kr@gmail.com)";
+  right_creator->setText(creator);
+  right_creator->setAlignment(Qt::AlignCenter);
+  right_creator->setAutoFillBackground(true);
+  right_creator->setFixedSize(QSize(360,90));
+  palette = right_creator->palette();
+  palette.setColor(QPalette::Window, palepurple);
+  right_creator->setPalette(palette);
+  font = right_creator->font();
+  font.setPointSize(9);
+  right_creator->setFont(font);
+  right_creator->setFrameStyle(QFrame::Panel | QFrame::Raised);
+  right_creator->setLineWidth(3);
+
   QImage imgIn= QImage((uchar*) logo_img.data, logo_img.cols, logo_img.rows, logo_img.step, QImage::Format_RGB888);
   QPixmap pixmap = QPixmap::fromImage(imgIn);
   right_logo->setPixmap(pixmap);
