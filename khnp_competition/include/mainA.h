@@ -730,7 +730,7 @@ void khnp_comp::finish_result(){
 
 
 void khnp_comp::QT_initialize(){
-  logo_img = cv::imread(path + "/resources/khnp.png");
+  logo_img = cv::imread(path + "/resources/khnp.jpg");
   pause_img = cv::imread(path + "/resources/pause.png");
   paused_img = cv::imread(path + "/resources/paused.png");
   falldown_img = cv::imread(path + "/resources/falldown.png");
@@ -938,20 +938,6 @@ void khnp_comp::QT_initialize(){
   font = right_text10->font();
   font.setPointSize(13);
   right_text10->setFont(font);
-
-  QString creator = "Maintainers (Report any bugs please)\n\nEungchang Mason Lee (email: eungchang_mason@kaist.ac.kr)\nJunho Choi (email: cjh6685kr@kaist.ac.kr)";
-  right_creator->setText(creator);
-  right_creator->setAlignment(Qt::AlignCenter);
-  right_creator->setAutoFillBackground(true);
-  right_creator->setFixedSize(QSize(360,90));
-  palette = right_creator->palette();
-  palette.setColor(QPalette::Window, palepurple);
-  right_creator->setPalette(palette);
-  font = right_creator->font();
-  font.setPointSize(9);
-  right_creator->setFont(font);
-  right_creator->setFrameStyle(QFrame::Panel | QFrame::Raised);
-  right_creator->setLineWidth(3);
 
   QImage imgIn= QImage((uchar*) logo_img.data, logo_img.cols, logo_img.rows, logo_img.step, QImage::Format_RGB888);
   QPixmap pixmap = QPixmap::fromImage(imgIn);
