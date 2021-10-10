@@ -117,7 +117,8 @@ class khnp_comp: public QWidget{
     gazebo_msgs::SetModelState model_move_srv;
     std_srvs::Empty empty_srv;
     std_msgs::Empty empty_msg;
-    rosgraph_msgs::Clock real_current_time, fixed_current_time, fixed_course_time, fell_down_time;
+    rosgraph_msgs::Clock real_current_time, fixed_current_time, fixed_course_time, fell_down_check_time;
+    double fell_down_penalty_time=0.0;
 
     bool initialized=false, qt_initialized=false, state_check=false, clock_check=false, third_cam_check=false, first_cam_check=false;
     bool first_clock_in=false, if_felldown_flag=false, tmp_felldown_counter=false, if_finished=false;
@@ -233,8 +234,8 @@ void khnp_comp::qt_timer_func(){
       ros::Duration temp2 = courseAB[current_map].time_limit - (real_current_time.clock-fixed_course_time.clock);
       right_text7->setText(QString::number(temp2.sec + temp2.nsec*1e-9,'g',7));
 
-      ros::Duration temp = real_current_time.clock-fixed_current_time.clock;
-      right_text8->setText(QString::number(temp.sec + temp.nsec*1e-9,'g',7));
+      double temp = (real_current_time.clock-fixed_current_time.clock).toSec() + fell_down_penalty_time;
+      right_text8->setText(QString::number(temp,'g',7));
     }
   }
 }
@@ -306,12 +307,12 @@ void khnp_comp::if_felldown_time_func(const ros::TimerEvent& event){
         if (if_felldown(states.pose[robot_idx])){
           ROS_WARN("Fell down check start");
           tmp_felldown_counter=true;
-          fell_down_time=real_current_time;
+          fell_down_check_time=real_current_time;
         }
       }
       else if (tmp_felldown_counter){
         if (if_felldown(states.pose[robot_idx])){ // still fell down
-          if ( (real_current_time.clock - fell_down_time.clock).toSec() >= 5.0 ){
+          if ( (real_current_time.clock - fell_down_check_time.clock).toSec() >= 5.0 ){
             ROS_WARN("Fell down! penalty!");
             if_felldown_flag=true;
             qt_icon_update(falldown_button, fell_img);
@@ -337,7 +338,7 @@ void khnp_comp::if_felldown_time_func(const ros::TimerEvent& event){
       }
       else if (tmp_felldown_counter){
         if (if_felldown(states.pose[robot_idx])){
-          if ( (real_current_time.clock - fell_down_time.clock).toSec() >= 125.0 ){
+          if ( (real_current_time.clock - fell_down_check_time.clock).toSec() >= 125.0 ){
             ROS_WARN("Still fell down longer than 2 mins, penalty!");
             qt_icon_update(falldown_button, falldown_img);
             current_score-=2;
@@ -347,7 +348,7 @@ void khnp_comp::if_felldown_time_func(const ros::TimerEvent& event){
             if_felldown_flag=false;
             tmp_felldown_counter=false;
             move_to_current_course();
-            fixed_current_time.clock -= ros::Duration(120.0);
+            fell_down_penalty_time += 120.0;
           }
         }
         else{ // stand again
@@ -597,7 +598,7 @@ void khnp_comp::falldown_button_callback(){
     tmp_felldown_counter=true;
     current_score-=3;
     falldown_score-=3;
-    fell_down_time=real_current_time;
+    fell_down_check_time=real_current_time;
     qt_icon_update(falldown_button, fell_img);
     right_text5->setText(QString::number(current_score,'g',7));
     right_text10->setText(QString::number(falldown_score,'g',7));
@@ -620,6 +621,7 @@ void khnp_comp::pause_button_callback(){
 }
 void khnp_comp::reset_button_callback(){
   resetter.call(empty_srv);
+  fell_down_penalty_time=0.0;
   fixed_current_time=real_current_time; 
   fixed_course_time=real_current_time;
   if_felldown_flag=false;
@@ -701,8 +703,8 @@ void khnp_comp::finish_result(){
     right_result->setFrameStyle(QFrame::Panel | QFrame::Raised);
     right_result->setLineWidth(3);
 
-    ros::Duration temp = real_current_time.clock-fixed_current_time.clock;
-    right_text8->setText(QString::number(temp.sec + temp.nsec*1e-9,'g',7));
+    double temp = (real_current_time.clock-fixed_current_time.clock).toSec() + fell_down_penalty_time;
+    right_text8->setText(QString::number(temp,'g',7));
 
     for (int i = 0; i < cubes_names.size(); ++i){
       other_pose.model_name = cubes_names[i];
