@@ -58,44 +58,44 @@
   gazebo_ros_control:
     pid_gains:
       finger_joint:
-        p: 8.0
-        i: 0.1
-        d: 0.0
-        i_clamp: 0.1
+        p: 50.0
+        i: 0.0
+        d: 0.004
+        i_clamp: 0.0
         antiwindup: true
         publish_state: true
       left_inner_knuckle_joint:
-        p: 8.0
-        i: 0.1
-        d: 0.0
-        i_clamp: 0.1
+        p: 15.0
+        i: 0.0
+        d: 0.001
+        i_clamp: 0.0
         antiwindup: true
         publish_state: true        
       left_inner_finger_joint:
-        p: 8.0
-        i: 0.1
-        d: 0.0
-        i_clamp: 0.1
+        p: 15.0
+        i: 0.0
+        d: 0.001
+        i_clamp: 0.0
         antiwindup: true
         publish_state: true        
       right_outer_knuckle_joint:
-        p: 8.0
-        i: 0.1
-        d: 0.0
-        i_clamp: 0.1
+        p: 50.0
+        i: 0.0
+        d: 0.004
+        i_clamp: 0.0
         antiwindup: true
         publish_state: true        
       right_inner_knuckle_joint:
-        p: 8.0
-        i: 0.1
-        d: 0.0
-        i_clamp: 0.1
+        p: 15.0
+        i: 0.0
+        d: 0.001
+        i_clamp: 0.0
         antiwindup: true
         publish_state: true        
       right_inner_finger_joint:
-        p: 8.0
-        i: 0.1
-        d: 0.0
-        i_clamp: 0.1
+        p: 15.0
+        i: 0.0
+        d: 0.001
+        i_clamp: 0.0
         antiwindup: true
         publish_state: true        

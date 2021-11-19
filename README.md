@@ -1,6 +1,7 @@
 # Korea Hydro & Nuclear Power - Autonomous Robotic Challenge 2021
 + Quadruped robot with manipulator for this year
 + For gripping motion, [`robotiq_2finger_grippers`](https://github.com/Danfoa/robotiq_2finger_grippers) is used
+    + [`gazebo_grasp_plugin`](https://github.com/JenniferBuehler/gazebo-pkgs) is added
 
 <br>
 

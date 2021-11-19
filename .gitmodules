@@ -4,3 +4,6 @@
 [submodule "champ"]
 	path = champ
 	url = https://github.com/engcang/champ
+[submodule "gazebo-pkgs"]
+	path = gazebo-pkgs
+	url = https://github.com/engcang/gazebo-pkgs
